@@ -6,7 +6,7 @@
 #		Purpose: Script is designed to easily use nmap commands to conduct IP and Vulnerability Scans
 #
 #		Creation Date: Apr/02/2020
-#		Last Revised: May/03/2020
+#		Last Revised: May/06/2020
 #======================================================================================================
 # This variable sets the delay timer to 5 seconds before
 # returning to main menu
@@ -74,7 +74,7 @@ _SF_
 		if [[ "$REPLY" == 3 ]]; then
 			echo
 			read -p "Please enter subnet (ex. 192.168.208.0/24): " rangeInput
-			sudo nmap -sP $rangeInput > ~/Scans/HostDiscovery.txt
+			sudo nmap -sP $rangeInput > ~/Scans/$(date +%Y-%m-%d_%H:%M)_HostDiscovery.txt
 			echo
 			echo "Scan result sent to /Scans/HostDiscovery.txt"
 			sleep "$DELAY"
@@ -92,15 +92,20 @@ _SF_
 				clear
 				echo "TARGET: " $userSelect1
 				cat <<-_SF1_
+				
 				Please choose the type of scan you would like to perform.
+				
 				1. Identify Operating System
 				2. TCP Syn and UDP Scan (Common Ports)
 				3. TCP Syn and UDP Scan (All Ports)
 				4. TCP Syn and UDP Scan (Specify Port(s))
 				5. Vulnerability Scan* (Vulscan)
 				6. Main Menu
+				
 				*This option will install git if not already installed
+				
 				_SF1_
+				
 
 				read -p "Enter Selection [1-6]: "
 
@@ -112,7 +117,7 @@ _SF_
 					if [[ "$REPLY" == 1 ]]; then
 						echo "Please Wait. This may take a while.."
 						echo
-						sudo nmap -O $userSelect1 > ~/Scans/OS.txt
+						sudo nmap -O $userSelect1 > ~/Scans/$(date +%Y-%m-%d_%H:%M)_OS.txt
 						echo "Result sent to ~/Scans/OS.txt"
 						sleep "$DELAY"
 
@@ -124,7 +129,7 @@ _SF_
 					if [[ "$REPLY" == 2 ]]; then
 						echo "Please Wait. This may take a while.."
 						echo
-						sudo nmap -sS -sU -Pn $userSelect1 > ~/Scans/Common_Ports.txt
+						sudo nmap -sS -sU -Pn $userSelect1 > ~/Scans/$(date +%Y-%m-%d_%H:%M)_Common_Ports.txt
 						echo "Result sent to ~/Scans/Common_Ports.txt"
 						sleep "$DELAY"
 					fi
@@ -135,7 +140,7 @@ _SF_
 					if [[ "$REPLY" == 3 ]]; then
 						echo "Please Wait. This may take a while.."
 						echo
-						sudo nmap -sS -sU -Pn -p 1-65535 $userSelect1 > ~/Scans/All_Ports.txt
+						sudo nmap -sS -sU -Pn -p 1-65535 $userSelect1 > ~/Scans/$(date +%Y-%m-%d_%H:%M)_All_Ports.txt
 						echo "Result sent to ~/Scans/All_Ports.txt"
 						sleep "$DELAY"
 					fi
@@ -150,7 +155,7 @@ _SF_
 						echo
 						echo "Please Wait. This may take a while.."
 						echo
-                        sudo nmap -sS -sU -Pn -p$userPorts $userSelect1 > ~/Scans/UserPicked_Ports.txt
+                        sudo nmap -sS -sU -Pn -p$userPorts $userSelect1 > ~/Scans/$(date +%Y-%m-%d_%H:%M)_UserPicked_Ports.txt
 						echo "Result sent to ~/Scans/UserPicked_Ports.txt"
 						sleep "$DELAY"
 					fi
@@ -160,17 +165,17 @@ _SF_
 # and nmap will update it's database following install. The output of each install
 # is directed to null to provide a cleaner user interface
 					if [[ "$REPLY" == 5 ]]; then
-                                                echo "Vulscan will be added to Nmap database if not already added"
-                                                echo
-                                                sudo apt-get install git -y > /dev/null 2>&1
-                                                sudo git clone https://github.com/scipag/vulscan scipag_vulscan > /dev/null 2>&1
-                                                sudo ln -s `pwd`/scipag_vulscan /usr/share/nmap/scripts/vulscan > /dev/null 2>&1
-                                                sudo nmap --script-updatedb > /dev/null 2>&1
-                                                echo "Commencing Vulnerability Scan. This may take a while.."
-                                                sudo nmap -sV --script=vulscan/vulscan.nse $userSelect1 > ~/Scans/Vuln_Scan.txt
-						                        echo
-                                                echo "Result sent to ~/Scans/Vuln_Scan"
-                                                sleep "$DELAY"
+						echo "Vulscan will be added to Nmap database if not already added"
+                        echo
+                        sudo apt-get install git -y > /dev/null 2>&1
+                        sudo git clone https://github.com/scipag/vulscan scipag_vulscan > /dev/null 2>&1
+                        sudo ln -s `pwd`/scipag_vulscan /usr/share/nmap/scripts/vulscan > /dev/null 2>&1
+                        sudo nmap --script-updatedb > /dev/null 2>&1
+                        echo "Commencing Vulnerability Scan. This may take a while.."
+                        sudo nmap -sV --script=vulscan/vulscan.nse $userSelect1 > ~/Scans/$(date +%Y-%m-%d_%H:%M)_Vuln_Scan.txt
+						echo
+                        echo "Result sent to ~/Scans/Vuln_Scan"
+                        sleep "$DELAY"
 					fi
 # If option 6 is chosen, the command issued will restart the script, moving
 # the user back to the initial menu.
@@ -191,8 +196,8 @@ _SF_
 # will display a thank you message on screen before returning immediately
 # to the command line
 		if [[ "$REPLY" == 5 ]]; then
-		echo "Thank you!"
-		exit
+			echo "Thank you!"
+			exit
 		fi
 
 # If the script user inputs an incorrect option on the main menu,
