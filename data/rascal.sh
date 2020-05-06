@@ -3,7 +3,7 @@
 #		Filename: Rascal Scanner
 #
 #		Author: S.T
-#		Purpose: Script is designed to easily use nmap commands to conduct IP and Vulnerability Scans
+#		Purpose: This tool is designed to easily use Nmap scans for Vulnerability Assessments
 #
 #		Creation Date: Apr/02/2020
 #		Last Revised: May/06/2020
