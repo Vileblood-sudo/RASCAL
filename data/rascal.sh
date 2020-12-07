@@ -2,11 +2,11 @@
 #=====================================================================================================
 #		Filename: Rascal Scanner
 #
-#		Author: S.T
+#		Author: Steven Thompson
 #		Purpose: This tool is designed to easily use Nmap scans for Vulnerability Assessments
 #
 #		Creation Date: Apr/02/2020
-#		Last Revised: May/06/2020
+#		Last Revised: Dec/07/2020
 #======================================================================================================
 # This variable sets the delay timer to 5 seconds before
 # returning to main menu
