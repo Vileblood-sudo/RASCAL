@@ -1,5 +1,7 @@
-# RASCAL
+## RASCAL
+# Automate Nmap scanning
 
-- This tool is designed to easily use Nmap scans for Vulnerability Assessments.
-- Useful for beginners in Cyber Security.
-- For Linux systems. Kali preferred.
+- I wrote this script for the purpose of quickly conducting Nmap scans for to complete college assignments. 
+- Served as my final project for a Linux Scripting course.
+- Suitable for a beginner in Cyber Security.
+
