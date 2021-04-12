@@ -160,11 +160,11 @@ _SF_
 # call upon the variable to specify what ports to scan. Results are sent to
 # the ~/Scans directory. Following output, the script will return to the nmap menu
 					if [[ "$REPLY" == 4 ]]; then
-                        read -p "Please enter the port(s) you would like to scan(ex. 1-100, 80,21): " userPorts
+						read -p "Please enter the port(s) you would like to scan(ex. 1-100, 80,21): " userPorts
 						echo
 						echo "Please Wait. This may take a while.."
 						echo
-                        sudo nmap -sS -sU -Pn -p$userPorts $userSelect1 > ~/Scans/$(date +%Y-%m-%d_%H:%M)_UserPicked_Ports.txt
+						sudo nmap -sS -sU -Pn -p$userPorts $userSelect1 > ~/Scans/$(date +%Y-%m-%d_%H:%M)_UserPicked_Ports.txt
 						echo "Result sent to ~/Scans/UserPicked_Ports.txt"
 						sleep "$DELAY"
 					fi
