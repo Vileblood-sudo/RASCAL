@@ -30,7 +30,6 @@ while [[ "$REPLY" != 0 ]]; do
 	echo -e "\e[31mIf Nmap is not currently installed, please update system prior to install.\e[0m"
 	
     cat <<-_SF_
-	
     ____  ___   _____ _________    __ 
    / __ \/   | / ___// ____/   |  / / 
   / /_/ / /| | \__ \/ /   / /| | / /  
@@ -114,8 +113,6 @@ _SF_
 				*This option will install git if not already installed
 				
 				_SF1_
-				
-
 				read -p "Enter Selection [1-6]: "
 
 # If option 1 is chosen from the above menu, a scan will be perfomed
