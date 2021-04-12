@@ -175,16 +175,16 @@ _SF_
 # is directed to null to provide a cleaner user interface
 					if [[ "$REPLY" == 5 ]]; then
 						echo "Vulscan will be added to Nmap database if not already added"
-                        echo
-                        sudo apt-get install git -y > /dev/null 2>&1
-                        sudo git clone https://github.com/scipag/vulscan scipag_vulscan > /dev/null 2>&1
-                        sudo ln -s `pwd`/scipag_vulscan /usr/share/nmap/scripts/vulscan > /dev/null 2>&1
-                        sudo nmap --script-updatedb > /dev/null 2>&1
-                        echo "Commencing Vulnerability Scan. This may take a while.."
-                        sudo nmap -sV --script=vulscan/vulscan.nse $userSelect1 > ~/Scans/$(date +%Y-%m-%d_%H:%M)_Vuln_Scan.txt
 						echo
-                        echo "Result sent to ~/Scans/Vuln_Scan"
-                        sleep "$DELAY"
+						sudo apt-get install git -y > /dev/null 2>&1
+						sudo git clone https://github.com/scipag/vulscan scipag_vulscan > /dev/null 2>&1
+						sudo ln -s `pwd`/scipag_vulscan /usr/share/nmap/scripts/vulscan > /dev/null 2>&1
+						sudo nmap --script-updatedb > /dev/null 2>&1
+						echo "Commencing Vulnerability Scan. This may take a while.."
+						sudo nmap -sV --script=vulscan/vulscan.nse $userSelect1 > ~/Scans/$(date +%Y-%m-%d_%H:%M)_Vuln_Scan.txt
+						echo
+						echo "Result sent to ~/Scans/Vuln_Scan"
+						sleep "$DELAY"
 					fi
 # If option 6 is chosen, the command issued will restart the script, moving
 # the user back to the initial menu.
