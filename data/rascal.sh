@@ -6,8 +6,9 @@
 #		Purpose: This tool is designed to easily use Nmap scans for Vulnerability Assessments
 #
 #		Creation Date: Apr/02/2020
-#		Last Revised: Dec/07/2020
+#		Last Revised: Apr/11/2021
 #======================================================================================================
+                                                                  
 # This variable sets the delay timer to 5 seconds before
 # returning to main menu
 DELAY=5
@@ -25,22 +26,30 @@ while [[ "$REPLY" != 0 ]]; do
 	echo -e "\e[31mWelcome to my Nmap Scanner Script! Please Use Responsibly!\e[0m"
     echo
 	echo -e "\e[31m~/Scans has been created to store scan results.\e[0m"
-    echo
-    echo -e "\e[31mIf Nmap is not currently installed, please update system prior to install.\e[0m"
+	echo
+	echo -e "\e[31mIf Nmap is not currently installed, please update system prior to install.\e[0m"
 	
     cat <<-_SF_
+	
+    ____  ___   _____ _________    __ 
+   / __ \/   | / ___// ____/   |  / / 
+  / /_/ / /| | \__ \/ /   / /| | / /  
+ / _, _/ ___ |___/ / /___/ ___ |/ /___
+/_/ |_/_/  |_/____/\____/_/  |_/_____/
+        2020-2021 Steven Thompson                          
+
 	Please choose from the following options (1-5):
 	
-    MAINTENANCE:
+	MAINTENANCE:
 	1. Update System
 	2. Install Nmap on System
-	
-    SCANS:
+
+	SCANS:
 	3. Host Discovery Scan
 	4. Nmap Scan Menu
-	
-    5. Exit Script
-	
+
+	5. Exit Script
+
 _SF_
 
 	read -p "Enter Selection[1-5]: "
