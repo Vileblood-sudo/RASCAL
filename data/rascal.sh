@@ -24,7 +24,7 @@ sudo mkdir -m 007 ~/Scans
 while [[ "$REPLY" != 0 ]]; do
 	clear
 	echo -e "\e[31mWelcome to my Nmap Scanner Script! Please Use Responsibly!\e[0m"
-    echo
+	echo
 	echo -e "\e[31m~/Scans has been created to store scan results.\e[0m"
 	echo
 	echo -e "\e[31mIf Nmap is not currently installed, please update system prior to install.\e[0m"
